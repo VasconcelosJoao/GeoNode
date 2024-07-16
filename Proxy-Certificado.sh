@@ -30,5 +30,3 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install git -y
 
 sudo reboot
-
-sudo date 071616332024
