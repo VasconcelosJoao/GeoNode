@@ -13,7 +13,7 @@ echo \
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-sudo mkdir -p /etc/systemd/system/docker.service.d/ && echo -e "[Service]\nEnvironment=\"HTTP_PROXY=http://proxy.ditec.pf.gov.br:3128\" \"HTTPS_PROXY=http://proxy.ditec.pf.gov.br:3128\"" | sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf > /dev/null
+sudo mkdir -p /etc/systemd/system/docker.service.d/ && echo -e "[Service]\nEnvironment=\"HTTP_PROXY=http://proxy.exemplo:1234\" \"HTTPS_PROXY=http://proxy.exemplo:1234\"" | sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf > /dev/null
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker

@@ -9,10 +9,10 @@ Caso você esteja em uma rede da PF, certifique-se de que o proxy e o certificad
 ```bash
 # Adiciona as configurações de proxy no ~/.bashrc
 echo "" >> ~/.bashrc
-echo "export http_proxy=http://proxy.ditec.pf.gov.br:3128" >> ~/.bashrc
-echo "export https_proxy=http://proxy.ditec.pf.gov.br:3128" >> ~/.bashrc
-echo "export HTTP_PROXY=http://proxy.ditec.pf.gov.br:3128" >> ~/.bashrc
-echo "export HTTPS_PROXY=http://proxy.ditec.pf.gov.br:3128" >> ~/.bashrc
+echo "export http_proxy=http://proxy.exemplo:1234" >> ~/.bashrc
+echo "export https_proxy=http://proxy.exemplo:1234" >> ~/.bashrc
+echo "export HTTP_PROXY=http://proxy.exemplo:1234" >> ~/.bashrc
+echo "export HTTPS_PROXY=http://proxy.exemplo:1234" >> ~/.bashrc
 echo "" >> ~/.bashrc
 echo 'export no_proxy="localhost, 127.0.0.1, dpf.gov.br, pf.gov.br, 10.0.0.0/8, 10.61.85.52, *googleapis.com, 172.217.0.0/16, "' >> ~/.bashrc
 echo "export NO_PROXY=\$no_proxy" >> ~/.bashrc
@@ -33,10 +33,10 @@ Observações:
 ```bash
 # Adiciona as configurações de proxy no /etc/environment
 echo "" | sudo tee -a /etc/environment > /dev/null
-echo "http_proxy=\"http://proxy.ditec.pf.gov.br:3128\"" | sudo tee -a /etc/environment > /dev/null
-echo "https_proxy=\"http://proxy.ditec.pf.gov.br:3128\"" | sudo tee -a /etc/environment > /dev/null
-echo "HTTP_PROXY=\"http://proxy.ditec.pf.gov.br:3128\"" | sudo tee -a /etc/environment > /dev/null
-echo "HTTPS_PROXY=\"http://proxy.ditec.pf.gov.br:3128\"" | sudo tee -a /etc/environment > /dev/null
+echo "http_proxy=\"http://proxy.exemplo:1234\"" | sudo tee -a /etc/environment > /dev/null
+echo "https_proxy=\"http://proxy.exemplo:1234\"" | sudo tee -a /etc/environment > /dev/null
+echo "HTTP_PROXY=\"http://proxy.exemplo:1234\"" | sudo tee -a /etc/environment > /dev/null
+echo "HTTPS_PROXY=\"http://proxy.exemplo:1234\"" | sudo tee -a /etc/environment > /dev/null
 echo "" | sudo tee -a /etc/environment > /dev/null
 echo "no_proxy=\"localhost, 127.0.0.1, dpf.gov.br, pf.gov.br, 10.0.0.0/8, 192.168.0.0/16, *googleapis.com, 172.217.0.0/16\"" | sudo tee -a /etc/environment > /dev/null
 echo "NO_PROXY=\"localhost, 127.0.0.1, dpf.gov.br, pf.gov.br, 10.0.0.0/8, 192.168.0.0/16, *googleapis.com, 172.217.0.0/16\"" | sudo tee -a /etc/environment > /dev/null
@@ -77,7 +77,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 3. Após instalar o Docker, também é necessário configurar o proxy no arquivo de configuração do próprio Docker em "/etc/systemd/system/docker.service.d/http-proxy.conf".
 
 ```bash
-sudo mkdir -p /etc/systemd/system/docker.service.d/ && echo -e "[Service]\nEnvironment=\"HTTP_PROXY=http://proxy.ditec.pf.gov.br:3128\" \"HTTPS_PROXY=http://proxy.ditec.pf.gov.br:3128\"" | sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf > /dev/null
+sudo mkdir -p /etc/systemd/system/docker.service.d/ && echo -e "[Service]\nEnvironment=\"HTTP_PROXY=http://proxy.exemplo:1234\" \"HTTPS_PROXY=http://proxy.exemplo:1234\"" | sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf > /dev/null
 ```
 
 4. Então, reinicie o serviço do docker
@@ -105,7 +105,7 @@ git checkout tags/4.1.3
 
 ```bash
 # Pode ser necessário passar o proxy como argumento, para o correto funcionamento do comando.
-sudo docker compose build --build-arg http_proxy=http://proxy.ditec.pf.gov.br:3128 --build-arg https_proxy=http://proxy.ditec.pf.gov.br:3128
+sudo docker compose build --build-arg http_proxy=http://proxy.exemplo:1234 --build-arg https_proxy=http://proxy.exemplo:1234
 # Pode ser necessário alterar o arquivo requirements.txt caso haja conflito com a versão do dropbox (erro constatado na data 15/07/2024)
 # A solução utilizada foi alterar a versão do dropbox==11.36.0 para dropbox==11.36.2
 
@@ -143,7 +143,7 @@ sed -i '/^  #build:/s/^  #/  /' docker-compose.yml
 sed -i '/^  #    context: .\//s/^  #/  /' docker-compose.yml
 sed -i '/^  #    dockerfile: Dockerfile/s/^  #/  /' docker-compose.yml
 # Pode ser necessário passar o proxy como argumento, para o correto funcionamento do comando.
-sudo docker compose build --build-arg http_proxy=http://proxy.ditec.pf.gov.br:3128 --build-arg https_proxy=http://proxy.ditec.pf.gov.br:3128
+sudo docker compose build --build-arg http_proxy=http://proxy.exemplo:1234 --build-arg https_proxy=http://proxy.exemplo:1234
 
 sudo docker compose up 
 ```

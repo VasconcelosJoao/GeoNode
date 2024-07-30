@@ -13,6 +13,6 @@ sed -i '/^  #build:/s/^  #/  /' docker-compose.yml
 sed -i '/^  #    context: .\//s/^  #/  /' docker-compose.yml
 sed -i '/^  #    dockerfile: Dockerfile/s/^  #/  /' docker-compose.yml
 # Foi necessário passar o proxy como argumento, pois sem ele o build não funcionava corretamente.
-sudo docker compose build --build-arg http_proxy=http://proxy.ditec.pf.gov.br:3128 --build-arg https_proxy=http://proxy.ditec.pf.gov.br:3128
+sudo docker compose build --build-arg http_proxy=http://proxy.exemplo:1234 --build-arg https_proxy=http://proxy.exemplo:1234
 
 sudo docker compose up -d
